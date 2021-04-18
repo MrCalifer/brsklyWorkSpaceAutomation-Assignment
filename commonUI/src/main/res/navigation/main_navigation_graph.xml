@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/communityFragment">
+
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="edu.califer.commonui.fragment.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community"/>
+
+    <fragment
+        android:id="@+id/meetingFragment"
+        android:name="edu.califer.commonui.fragment.MeetingFragment"
+        android:label="fragment_meeting"
+        tools:layout="@layout/fragment_meeting" />
+
+    <action
+        android:id="@+id/action_meeting_flow"
+        app:destination="@id/meetingFragment"
+        app:popUpTo="@navigation/main_navigation_graph"
+        app:popUpToInclusive="true"/>
+
+    <action
+        android:id="@+id/action_community_flow"
+        app:destination="@id/communityFragment"
+        app:popUpTo="@navigation/main_navigation_graph"
+        app:popUpToInclusive="true"/>
+</navigation>

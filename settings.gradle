@@ -1,0 +1,6 @@
+include ':commonUI'
+include ':cvo'
+include ':repository'
+include ':api'
+include ':app'
+rootProject.name = "BrsklyAssignment"

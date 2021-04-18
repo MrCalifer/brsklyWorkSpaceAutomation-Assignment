@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="userName"
+            type="String" />
+
+        <variable
+            name="userCompanyName"
+            type="String" />
+
+        <variable
+            name="userLocation"
+            type="String" />
+
+        <variable
+            name="userProfilePicture"
+            type="String" />
+        
+        <variable
+            name="userFeedPostDuration"
+            type="String" />
+
+        <variable
+            name="feedText"
+            type="String" />
+
+        <variable
+            name="feedImage"
+            type="String" />
+
+        <variable
+            name="feedLikes"
+            type="String" />
+
+        <variable
+            name="feedComments"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="4dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="20dp"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/user_detail_segment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/user_profile_picture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="5dp"
+                            android:padding="3dp"
+                            android:src="@mipmap/ic_launcher_round" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/user_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:maxWidth="150dp"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp"
+                                android:text="@{userName , default=`ARPIT KUMAR TAPASWI`}"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black"
+                                android:textFontWeight="500"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/user_company_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp"
+                                android:text="@{userCompanyName , default=`Demo Company`}"
+                                android:textAllCaps="false"
+                                android:textColor="@color/helpText"
+                                android:textFontWeight="500"
+                                android:textSize="16sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginVertical="2dp"
+                                    android:padding="2dp"
+                                    android:src="@drawable/ic_outline_pin_drop_24" />
+
+                                <TextView
+                                    android:id="@+id/user_location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:maxWidth="150dp"
+                                    android:paddingHorizontal="8dp"
+                                    android:paddingVertical="3dp"
+                                    android:text="@{userLocation , default=`Bihar`}"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/helpText"
+                                    android:textFontWeight="500"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="@{userFeedPostDuration +`ago` , default = `6 months ago`}"
+                            android:textColor="@color/helpText"
+                            android:textSize="15sp" />
+
+                        <Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="?attr/actionBarSize"
+                            android:elevation="5dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/feedText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginVertical="3dp"
+                        android:padding="3dp"
+                        android:text="@{feedText , default=`hey`}"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@id/user_detail_segment"
+                        app:layout_constraintTop_toBottomOf="@id/user_detail_segment" />
+
+
+                    <ImageView
+                        android:id="@+id/feed_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        app:layout_constraintHeight_max="200dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/demo"
+                        app:layout_constraintStart_toStartOf="@id/feedText"
+                        app:layout_constraintTop_toBottomOf="@id/feedText" />
+
+                    <LinearLayout
+                        android:id="@+id/feed_like_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/feed_image">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{feedLikes+` Likes` , default=`1 Likes`}"
+                            android:layout_marginHorizontal="3dp"
+                            android:layout_marginTop="15dp"
+                            android:padding="3dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/helpText"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{feedComments+` Comments` , default=`0 Comments`}"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:padding="3dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/helpText"/>
+
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/line_seperator"
+                        android:layout_width="match_parent"
+                        android:layout_height="5.5dp"
+                        android:src="@drawable/view_line_seprator"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/feed_like_comment"/>
+
+                    <LinearLayout
+                        android:id="@+id/bottom_segment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:weightSum="3"
+                        app:layout_constraintTop_toBottomOf="@id/line_seperator"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+
+                        <LinearLayout
+                            android:id="@+id/like_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/like_button"
+                                android:layout_gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Like"
+                                android:textSize="16sp"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/helpText"
+                                android:layout_marginStart="5dp"
+                                android:padding="2dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/comment_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/comment_icon"
+                                android:layout_gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Comment"
+                                android:textSize="16sp"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/helpText"
+                                android:layout_marginStart="5dp"
+                                android:padding="2dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/share_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:src="@drawable/ic_outline_share_24"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Share"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="16sp"
+                                android:textColor="@color/helpText"
+                                android:layout_marginStart="5dp"
+                                android:padding="2dp"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
