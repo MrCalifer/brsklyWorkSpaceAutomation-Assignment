@@ -10,14 +10,12 @@ import androidx.lifecycle.ViewModel;
 
 import com.bumptech.glide.Glide;
 
-import java.io.IOException;
-
 import edu.califer.cvo.communityModels.PostModel;
 import edu.califer.cvo.meetingModels.MeetingDataModel;
 import edu.califer.repository.CommunityFeedRepository;
 import edu.califer.repository.MeetingRepository;
 
-public class HomeViewModel extends ViewModel{
+public class HomeViewModel extends ViewModel {
 
     private final String TAG = "HomeViewModel";
 
@@ -27,14 +25,15 @@ public class HomeViewModel extends ViewModel{
     public MutableLiveData<MeetingDataModel> meetingData;
     private MeetingRepository meetingRepository;
 
-    public LiveData<PostModel> getFeedPost(String spaceIds) throws InterruptedException {
-        if (postData != null){
+    public LiveData<PostModel> getFeedPost(String spaceIds)
+            throws InterruptedException {
+        if (postData != null) {
             return postData;
         }
         communityFeedRepository = CommunityFeedRepository.getInstance();
         Runnable run = () -> {
             try {
-                Log.d(TAG , "Sending Request to CommunityFeed Repository");
+                Log.d(TAG, "Sending Request to CommunityFeed Repository");
                 postData = communityFeedRepository.getPostFeedData(spaceIds);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -51,13 +50,13 @@ public class HomeViewModel extends ViewModel{
                                                             String open_time,
                                                             String close_time)
             throws InterruptedException {
-        if (meetingData != null){
+        if (meetingData != null) {
             return meetingData;
         }
         meetingRepository = MeetingRepository.getInstance();
-        Runnable task = () ->{
+        Runnable task = () -> {
             try {
-                Log.d(TAG , "Sending Request to Meeting Repository");
+                Log.d(TAG, "Sending Request to Meeting Repository");
                 meetingData = meetingRepository.getMeetingSlotBookingAvailability(
                         date,
                         id,

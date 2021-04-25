@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 import edu.califer.api.RetrofitClientInstance;
 import edu.califer.commonui.R;
 import edu.califer.commonui.adapter.CommunityFeedAdapter;
@@ -41,7 +43,7 @@ public class CommunityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        requireActivity().runOnUiThread(() -> viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class));
     }
 
     @Override
@@ -49,10 +51,7 @@ public class CommunityFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_community, container, false);
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
-        binding.setLifecycleOwner(this);
-
+        binding.setLifecycleOwner(requireActivity());
         return binding.getRoot();
     }
 

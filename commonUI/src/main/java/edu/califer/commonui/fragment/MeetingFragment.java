@@ -37,17 +37,15 @@ public class MeetingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requireActivity().runOnUiThread(() -> viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_meeting, container, false);
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        binding.setLifecycleOwner(this);
-
+        binding.setLifecycleOwner(requireActivity());
         return binding.getRoot();
     }
 
